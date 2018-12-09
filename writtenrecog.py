@@ -57,7 +57,6 @@ data = digits.images.reshape((n_samples, -1))
 
 imagedata = totalarray.reshape((m_samples, -1))
 
-#classifier = svm.SVC(gamma=0.001)
 gnb = MLPClassifier(solver='lbfgs', alpha=0.0001,hidden_layer_sizes=(250, 100), random_state=1)
 gnb.fit(data[:n_samples // 2], digits.target[:n_samples // 2])
 
