@@ -1,9 +1,6 @@
-import matplotlib.pyplot as plt
 import imageio
-from sklearn import datasets, svm, metrics
-from sklearn.naive_bayes import GaussianNB
+from sklearn import datasets
 import numpy
-from math import ceil
 from sklearn.neural_network import MLPClassifier
 
 numpy.set_printoptions(threshold=numpy.nan)
@@ -57,12 +54,12 @@ data = digits.images.reshape((n_samples, -1))
 
 imagedata = totalarray.reshape((m_samples, -1))
 
-gnb = MLPClassifier(solver='lbfgs', alpha=0.0001,hidden_layer_sizes=(250, 100), random_state=1)
-gnb.fit(data[:n_samples // 2], digits.target[:n_samples // 2])
+model = MLPClassifier(solver='lbfgs', alpha=0.0001,hidden_layer_sizes=(250, 100), random_state=1)
+model.fit(data[:n_samples // 2], digits.target[:n_samples // 2])
 
 expected = digits.target[n_samples // 2:]
 
-predicted = gnb.predict(imagedata)
+predicted = model.predict(imagedata)
 expected = [0,1,2,3,4,5,6,7,8,9]
 print("expected: "+ str(expected))
 print("prediction +" + str(predicted))
